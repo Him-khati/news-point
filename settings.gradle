@@ -1,0 +1,4 @@
+include ':base'
+include ':feature_wallet'
+include ':app', ':data', ':core', ':cache', ':remote', ':feature_auth'
+rootProject.name='news-point'

@@ -1,0 +1,35 @@
+import mobile.buildsrc.Libs
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildToolVersion
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+    }
+}
+
+
+dependencies {
+    testImplementation Libs.junit
+    testImplementation Libs.mockitoInline
+    testImplementation Libs.mockitoKotlin
+    testImplementation Libs.Coroutines.test
+
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.Vinners.logger
+    implementation Libs.Firebase.auth
+    implementation Libs.Google.auth
+
+    implementation Libs.Coroutines.core
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation Libs.Dagger.dagger
+    kapt Libs.Dagger.compiler
+}

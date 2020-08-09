@@ -1,0 +1,50 @@
+import mobile.buildsrc.Libs
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildToolVersion
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+
+        consumerProguardFiles 'consumer-rules.pro'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    androidExtensions {
+        experimental = true
+        features = ["parcelize"]
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    testImplementation Libs.junit
+    testImplementation Libs.mockitoInline
+    testImplementation Libs.mockitoKotlin
+    testImplementation Libs.AndroidX.archCoreTesting
+    testImplementation Libs.Coroutines.test
+
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.AndroidX.appcompat
+    implementation Libs.AndroidX.coreKtx
+    implementation Libs.AndroidX.Lifecycle.lifeCyleViewModel
+    implementation Libs.AndroidX.Lifecycle.lifeCyleLiveData
+    implementation Libs.AndroidX.Lifecycle.lifeCyleLiveData
+}
